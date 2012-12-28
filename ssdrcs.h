@@ -4,27 +4,30 @@
   Released into the GPLv3.
  */
 
-#ifndef Ssdrcs_h
-#define Ssdrcs_h
+#ifndef ssdrcs_h
+#define ssdrcs_h
 
-#include "WProgram.h"
+#include "Arduino.h"
 
-class Ssdrcs
+class ssdrcs
 {
 public:
-	Ssdrcs(int ssdrcsLedPin);
-	void SSDdecimal(unsigned int num, boolean zero);
-	int testSSD();
+	ssdrcs(byte ssdrcsLedPin);
+	void SSDdecimal(int num, boolean zero);
+	void SSDhex(byte num, boolean zero);
+	byte testSSD();
 private:
-	int _ntime;
-	int _strob;
-	int _ssdrcsLedPin;
+	byte _ntime;
+	byte _strob;
+	byte _ssdrcsLedPin;
 
-	void writebit(int num);
-	unsigned int generateSSDonenum(unsigned int num, boolean zero, boolean dot);
-	int writeSSDonenum(unsigned int num, boolean zero, boolean dot);
-	unsigned int decimalLO(unsigned int num);
-	unsigned int decimalHI(unsigned int num);
+	void writebit(byte num);
+	byte generateSSDonenum(byte num, boolean zero, boolean dot);
+	byte writeSSDonenum(byte num, boolean zero, boolean dot);
+	byte decimalLO(byte num);
+	byte decimalHI(byte num);
+	byte hexLO(byte num);
+	byte hexHI(byte num);
 };
 
 #endif
